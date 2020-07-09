@@ -1,38 +1,96 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+:root {
+	--color-primary: #0277bd;
+	--color-primary-dark: #004c8c;
+	--color-primary-light: #58a5f0;
+	--color-secondary: #ffeb3b;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+* {
+	box-sizing: border-box;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body {
+	background-color: #f3f3f3;
+	font-family: 'Roboto', sans-serif;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.container {
+	width: 90%;
+	margin: 0 auto;
 }
 
-.App-link {
-  color: #61dafb;
+.loading {
+	width: 150px;
+	margin-top: 3rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* pokemon.js style*/
+.pokemon-grid {
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	gap: 0.2rem;
+}
+
+.pokemon-img {
+	width: 100%;
+	padding: 0.2rem;
+	border: 1px black solid;
+	border-top-left-radius: 0.4rem;
+	border-top-right-radius: 0.4rem;
+}
+
+.pokemon-name {
+	padding: 0.4rem;
+	text-align: center;
+	border-bottom-left-radius: 0.4rem;
+	border-bottom-right-radius: 0.4rem;
+	background-color: #333;
+	color: #f3f3f3;
+	margin: 0;
+}
+
+/* pagination*/
+.pagination {
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+}
+
+/*search bar*/
+.form-group {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.search-text {
+	flex: 1;
+	padding: 0.4rem;
+	margin: 0 0.4rem;
+}
+
+/* utils */
+
+.text-center {
+	text-align: center;
+}
+
+.btn-primary {
+	font-family: 'Roboto', sans-serif;
+	padding: 0.6rem;
+	border: none;
+	color: white;
+	background-color: var(--color-primary);
+	border-radius: 0.2rem;
+	font-weight: bold;
+	margin: 0.4rem;
+	width: 120px;
+	box-shadow: 2px 2px 3px 0px rgba(0, 0, 0, 0.2);
+}
+
+.btn-primary:hover {
+	background-color: var(--color-primary-dark);
+	color: var(--color-secondary);
 }
