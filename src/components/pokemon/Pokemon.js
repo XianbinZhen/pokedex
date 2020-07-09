@@ -19,7 +19,7 @@ export default function Pokemon({ pokemon }) {
 
 	return (
 		<div>
-			<img src={loading ? loadingImg : imgUrl} alt="img" className="pokemon-img" />
+			<img src={loading ? loadingImg : imgUrl} alt="img unavailable" className="pokemon-img" />
 			<p className="pokemon-name">{loading ? 'loading...' : pokemon.name}</p>
 		</div>
 	);
