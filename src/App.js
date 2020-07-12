@@ -1,16 +1,21 @@
 import React, { useState, useEffect } from 'react';
+import { Route, Link } from 'react-router-dom';
+import Navbar from './components/ui/Navbar';
 import Loading from './components/ui/Loading';
 import PokemonList from './components/pokemon/PokemonList';
 import Pagination from './components//ui/Pagination';
 import Search from './components/ui/Search';
+import PokemonDetail from './components/pokemon/PokemonDetail';
 import Axios from 'axios';
 
 const DEFAULT_URL = 'https://pokeapi.co/api/v2/pokemon';
 const LAST_PAGE_URL = 'https://pokeapi.co/api/v2/pokemon?limit=20&offset=877';
 
 function App() {
+	const [ isShowAll, setIsShowAll ] = useState(true);
 	const [ pokemon, setPokemon ] = useState([]);
 	const [ currentUrl, setCurrentUrl ] = useState(DEFAULT_URL);
+	const [ currentPokemon, setCurrentPokemon ] = useState({});
 
 	const [ prevUrl, setPrevUrl ] = useState(null);
 	const [ nextUrl, setNextUrl ] = useState(null);
@@ -27,7 +32,7 @@ function App() {
 				if (result.data.forms) {
 					setPrevUrl(null);
 					setNextUrl(null);
-					setPokemon(result.data.forms);
+					setPokemon([ { name: result.data.name, url: currentUrl } ]);
 				}
 			};
 			fetchData();
@@ -56,11 +61,28 @@ function App() {
 		}
 	};
 
+	const showPokemonDetail = (pokemon) => {
+		setIsShowAll(!isShowAll);
+		setCurrentPokemon(pokemon);
+	};
+
 	return (
 		<div className="container">
-			<Pagination previousPage={previousPage} resetPage={resetPage} nextPage={nextPage} lastPage={lastPage} />
-			<Search query={query} />
-			<PokemonList pokemon={pokemon} />
+			<Navbar />
+			{isShowAll ? (
+				<div>
+					<Pagination
+						previousPage={previousPage}
+						resetPage={resetPage}
+						nextPage={nextPage}
+						lastPage={lastPage}
+					/>
+					<Search query={query} />
+					<PokemonList pokemon={pokemon} showPokemonDetail={showPokemonDetail} />
+				</div>
+			) : (
+				<PokemonDetail currentPokemon={currentPokemon} showPokemonDetail={() => setIsShowAll(!isShowAll)} />
+			)}
 		</div>
 	);
 }
