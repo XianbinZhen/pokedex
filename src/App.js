@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import { Route } from 'react-router-dom';
+import Axios from 'axios';
 import Navbar from './components/ui/Navbar';
 import PokemonList from './components/pokemon/PokemonList';
 import Pagination from './components//ui/Pagination';
 import Search from './components/ui/Search';
 import PokemonDetail from './components/pokemon/PokemonDetail';
-import Axios from 'axios';
+import About from './components/ui/About';
+import Footer from './components/ui/Footer';
 
 const DEFAULT_URL = 'https://pokeapi.co/api/v2/pokemon';
 const LAST_PAGE_URL = 'https://pokeapi.co/api/v2/pokemon?limit=20&offset=877';
@@ -67,20 +70,26 @@ function App() {
 	return (
 		<div className="container">
 			<Navbar />
-			{isShowAll ? (
-				<div>
-					<Pagination
-						previousPage={previousPage}
-						resetPage={resetPage}
-						nextPage={nextPage}
-						lastPage={lastPage}
-					/>
-					<Search query={query} />
-					<PokemonList pokemon={pokemon} showPokemonDetail={showPokemonDetail} />
-				</div>
-			) : (
-				<PokemonDetail currentPokemon={currentPokemon} showPokemonDetail={() => setIsShowAll(!isShowAll)} />
-			)}
+			<Route exact path="/">
+				{isShowAll ? (
+					<div>
+						<Pagination
+							previousPage={previousPage}
+							resetPage={resetPage}
+							nextPage={nextPage}
+							lastPage={lastPage}
+						/>
+						<Search query={query} />
+						<PokemonList pokemon={pokemon} showPokemonDetail={showPokemonDetail} />
+					</div>
+				) : (
+					<PokemonDetail currentPokemon={currentPokemon} showPokemonDetail={() => setIsShowAll(!isShowAll)} />
+				)}
+			</Route>
+			<Route exact path="/about">
+				<About />
+			</Route>
+			<Footer />
 		</div>
 	);
 }

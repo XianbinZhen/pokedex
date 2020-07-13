@@ -29,8 +29,8 @@ const PokemonDetail = ({ currentPokemon, showPokemonDetail }) => {
 		[ currentPokemon.url ]
 	);
 	return (
-		<div className="container">
-			<div className="pokemon-detail " onClick={showPokemonDetail}>
+		<div>
+			<div className="pokemon-detail ">
 				<img
 					className="pokemon-detail-left"
 					src={id > 807 ? sprites.front_default : imgUrl}
@@ -39,28 +39,34 @@ const PokemonDetail = ({ currentPokemon, showPokemonDetail }) => {
 				<div className="pokemon-detail-right">
 					<div className="pokemon-detail-right-top">
 						<p>
-							#{id} {name}
+							#{id} <br />
+							{name}
 						</p>
-						<table>
-							<tbody>
-								<tr>
-									<td>Types</td>
-									{types.map((type) => <td key={type.slot}>{type.type.name}</td>)}
-								</tr>
-								<tr>
-									<td>Height</td>
-									<td>{height}</td>
-								</tr>
-								<tr>
-									<td>Weight</td>
-									<td>{weight}</td>
-								</tr>
-							</tbody>
-						</table>
 					</div>
+					<table>
+						<tbody>
+							<tr>
+								<td>Types</td>
+								{types.map((type) => <td key={type.slot}>{type.type.name}</td>)}
+							</tr>
+							<tr>
+								<td>Height</td>
+								<td>{height}</td>
+							</tr>
+							<tr>
+								<td>Weight</td>
+								<td>{weight}</td>
+							</tr>
+						</tbody>
+					</table>
 				</div>
 			</div>
-			{Object.values(sprites).map((url, index) => url && <img key={index} src={url} alt="sprites" />)}
+			<div className="pokemon-detail-sprites">
+				{Object.values(sprites).map((url, index) => url && <img key={index} src={url} alt="sprites" />)}
+			</div>
+			<button className="back-btn" onClick={showPokemonDetail}>
+				Back
+			</button>
 		</div>
 	);
 };
