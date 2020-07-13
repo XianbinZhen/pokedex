@@ -1,23 +1,23 @@
 {
   "files": {
     "main.css": "/XianbinZhen/pokedex/static/css/main.7bafa341.chunk.css",
-    "main.js": "/XianbinZhen/pokedex/static/js/main.d0372914.chunk.js",
-    "main.js.map": "/XianbinZhen/pokedex/static/js/main.d0372914.chunk.js.map",
+    "main.js": "/XianbinZhen/pokedex/static/js/main.56edd1f3.chunk.js",
+    "main.js.map": "/XianbinZhen/pokedex/static/js/main.56edd1f3.chunk.js.map",
     "runtime-main.js": "/XianbinZhen/pokedex/static/js/runtime-main.da5f977a.js",
     "runtime-main.js.map": "/XianbinZhen/pokedex/static/js/runtime-main.da5f977a.js.map",
-    "static/js/2.a9a7d939.chunk.js": "/XianbinZhen/pokedex/static/js/2.a9a7d939.chunk.js",
-    "static/js/2.a9a7d939.chunk.js.map": "/XianbinZhen/pokedex/static/js/2.a9a7d939.chunk.js.map",
+    "static/js/2.1bbd6610.chunk.js": "/XianbinZhen/pokedex/static/js/2.1bbd6610.chunk.js",
+    "static/js/2.1bbd6610.chunk.js.map": "/XianbinZhen/pokedex/static/js/2.1bbd6610.chunk.js.map",
     "index.html": "/XianbinZhen/pokedex/index.html",
-    "precache-manifest.f8b8d92ccdc2d929d0bb28655674127b.js": "/XianbinZhen/pokedex/precache-manifest.f8b8d92ccdc2d929d0bb28655674127b.js",
+    "precache-manifest.1b0696631ebee6d83194f9527cb6bbe6.js": "/XianbinZhen/pokedex/precache-manifest.1b0696631ebee6d83194f9527cb6bbe6.js",
     "service-worker.js": "/XianbinZhen/pokedex/service-worker.js",
     "static/css/main.7bafa341.chunk.css.map": "/XianbinZhen/pokedex/static/css/main.7bafa341.chunk.css.map",
-    "static/js/2.a9a7d939.chunk.js.LICENSE.txt": "/XianbinZhen/pokedex/static/js/2.a9a7d939.chunk.js.LICENSE.txt",
+    "static/js/2.1bbd6610.chunk.js.LICENSE.txt": "/XianbinZhen/pokedex/static/js/2.1bbd6610.chunk.js.LICENSE.txt",
     "static/media/running.gif": "/XianbinZhen/pokedex/static/media/running.b0e3f776.gif"
   },
   "entrypoints": [
     "static/js/runtime-main.da5f977a.js",
-    "static/js/2.a9a7d939.chunk.js",
+    "static/js/2.1bbd6610.chunk.js",
     "static/css/main.7bafa341.chunk.css",
-    "static/js/main.d0372914.chunk.js"
+    "static/js/main.56edd1f3.chunk.js"
   ]
 }
