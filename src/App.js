@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Route, Link } from 'react-router-dom';
 import Navbar from './components/ui/Navbar';
-import Loading from './components/ui/Loading';
 import PokemonList from './components/pokemon/PokemonList';
 import Pagination from './components//ui/Pagination';
 import Search from './components/ui/Search';

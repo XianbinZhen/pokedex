@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import Axios from 'axios';
-import Pokemon from './Pokemon';
 
 const PokemonDetail = ({ currentPokemon, showPokemonDetail }) => {
 	const [ imgUrl, setImgUrl ] = useState([]);
@@ -12,26 +11,31 @@ const PokemonDetail = ({ currentPokemon, showPokemonDetail }) => {
 	const [ weight, setWeight ] = useState('');
 	const [ height, setHeight ] = useState('');
 
-	const [ loading, setLoading ] = useState(true);
-
-	useEffect(() => {
-		const fetchData = async () => {
-			const result = await Axios(currentPokemon.url);
-			setImgUrl(result.data.sprites.front_default);
-			setId(result.data.order);
-			setName(result.data.name);
-			setTypes(result.data.types);
-			setWeight(result.data.weight);
-			setHeight(result.data.height);
-			setSprites(result.data.sprites);
-			setLoading(false);
-		};
-		fetchData();
-	}, []);
+	useEffect(
+		() => {
+			const fetchData = async () => {
+				const result = await Axios(currentPokemon.url);
+				// setImgUrl(result.data.sprites.front_default);
+				setImgUrl(`https://pokeres.bastionbot.org/images/pokemon/${result.data.id}.png`);
+				setId(result.data.id);
+				setName(result.data.name);
+				setTypes(result.data.types);
+				setWeight(result.data.weight);
+				setHeight(result.data.height);
+				setSprites(result.data.sprites);
+			};
+			fetchData();
+		},
+		[ currentPokemon.url ]
+	);
 	return (
 		<div className="container">
 			<div className="pokemon-detail " onClick={showPokemonDetail}>
-				<img className="pokemon-detail-left" src={sprites.front_default} />
+				<img
+					className="pokemon-detail-left"
+					src={id > 807 ? sprites.front_default : imgUrl}
+					alt="pokemon-sprites"
+				/>
 				<div className="pokemon-detail-right">
 					<div className="pokemon-detail-right-top">
 						<p>
@@ -41,7 +45,7 @@ const PokemonDetail = ({ currentPokemon, showPokemonDetail }) => {
 							<tbody>
 								<tr>
 									<td>Types</td>
-									{types && types.map((type) => <td key={type.slot}>{type.type.name}</td>)}
+									{types.map((type) => <td key={type.slot}>{type.type.name}</td>)}
 								</tr>
 								<tr>
 									<td>Height</td>
@@ -56,9 +60,7 @@ const PokemonDetail = ({ currentPokemon, showPokemonDetail }) => {
 					</div>
 				</div>
 			</div>
-			{Object.values(sprites).map(
-				(url, index) => (url ? <img key={index} src={url} /> : <React.Fragment key={index} />)
-			)}
+			{Object.values(sprites).map((url, index) => url && <img key={index} src={url} alt="sprites" />)}
 		</div>
 	);
 };

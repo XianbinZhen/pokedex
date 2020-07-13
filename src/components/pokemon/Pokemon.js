@@ -7,14 +7,17 @@ export default function Pokemon({ pokemon, showPokemonDetail }) {
 	const [ imgUrl, setImgUrl ] = useState([]);
 	const [ loading, setLoading ] = useState(true);
 
-	useEffect(() => {
-		const fetchData = async () => {
-			const result = await Axios(pokemon.url);
-			setImgUrl(result.data.sprites.front_default);
-			setLoading(false);
-		};
-		fetchData();
-	}, []);
+	useEffect(
+		() => {
+			const fetchData = async () => {
+				const result = await Axios(pokemon.url);
+				setImgUrl(result.data.sprites.front_default);
+				setLoading(false);
+			};
+			fetchData();
+		},
+		[ pokemon.url ]
+	);
 
 	return (
 		<div onClick={() => showPokemonDetail(pokemon)}>

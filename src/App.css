@@ -94,16 +94,20 @@ body {
 
 .pokemon-detail {
 	display: flex;
-	justify-content: center;
+	justify-content: space-between;
 	align-items: center;
 }
 
 .pokemon-detail-left {
-	flex: 1;
-	width: 100%;
+	display: block;
+	width: 400px;
+	height: 400px;
+	object-fit: contain;
+	padding: 20px;
+	background-color: #fff;
+	box-shadow: 0 0 4px 4px black;
 }
 .pokemon-detail-right {
-	flex: 1;
 }
 /* utils */
 
