@@ -10,7 +10,7 @@ const Navbar = () => {
 
 				<ul className="navbar">
 					<li>
-						<Link to="/" className="link-style">
+						<Link to="/pokedex" className="link-style">
 							Home
 						</Link>
 					</li>

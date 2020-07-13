@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import Axios from 'axios';
 import Navbar from './components/ui/Navbar';
 import PokemonList from './components/pokemon/PokemonList';
@@ -70,25 +70,30 @@ function App() {
 	return (
 		<div className="container">
 			<Navbar />
-			<Route exact path="/">
-				{isShowAll ? (
-					<div>
-						<Pagination
-							previousPage={previousPage}
-							resetPage={resetPage}
-							nextPage={nextPage}
-							lastPage={lastPage}
+			<Switch>
+				<Route exact path="/pokedex">
+					{isShowAll ? (
+						<div>
+							<Pagination
+								previousPage={previousPage}
+								resetPage={resetPage}
+								nextPage={nextPage}
+								lastPage={lastPage}
+							/>
+							<Search query={query} />
+							<PokemonList pokemon={pokemon} showPokemonDetail={showPokemonDetail} />
+						</div>
+					) : (
+						<PokemonDetail
+							currentPokemon={currentPokemon}
+							showPokemonDetail={() => setIsShowAll(!isShowAll)}
 						/>
-						<Search query={query} />
-						<PokemonList pokemon={pokemon} showPokemonDetail={showPokemonDetail} />
-					</div>
-				) : (
-					<PokemonDetail currentPokemon={currentPokemon} showPokemonDetail={() => setIsShowAll(!isShowAll)} />
-				)}
-			</Route>
-			<Route exact path="/about">
-				<About />
-			</Route>
+					)}
+				</Route>
+				<Route exact path="/about">
+					<About />
+				</Route>
+			</Switch>
 			<Footer />
 		</div>
 	);
