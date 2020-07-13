@@ -10,13 +10,7 @@ export default function Search({ query }) {
 	return (
 		<form className="form-group">
 			<i className="fas fa-search" />
-			<input
-				type="text"
-				placeholder="Input pokemon name"
-				className="search-text"
-				autoFocus
-				onChange={updateText}
-			/>
+			<input type="text" placeholder="Pokemon full name or ID" className="search-text" onChange={updateText} />
 			<button
 				className="btn-primary"
 				onClick={(e) => {

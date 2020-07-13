@@ -57,7 +57,7 @@ function App() {
 	};
 	const query = (param) => {
 		if (param) {
-			const url = `${DEFAULT_URL}/${param}`;
+			const url = `${DEFAULT_URL}/${param.toLowerCase()}`;
 			setCurrentUrl(url);
 		}
 	};
