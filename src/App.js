@@ -23,20 +23,32 @@ function App() {
 
 	useEffect(
 		() => {
+			let cancel;
 			const fetchData = async () => {
-				const result = await Axios(currentUrl);
-				if (result.data.results) {
-					setPokemon(result.data.results);
-					setPrevUrl(result.data.previous);
-					setNextUrl(result.data.next);
-				}
-				if (result.data.forms) {
-					setPrevUrl(null);
-					setNextUrl(null);
-					setPokemon([ { name: result.data.name, url: currentUrl } ]);
+				try {
+					const result = await Axios({
+						method: 'GET',
+						url: currentUrl,
+						cancelToken: new Axios.CancelToken((c) => (cancel = c))
+					});
+					if (result.data.results) {
+						setPokemon(result.data.results);
+						setPrevUrl(result.data.previous);
+						setNextUrl(result.data.next);
+					}
+					if (result.data.forms) {
+						setPrevUrl(null);
+						setNextUrl(null);
+						setPokemon([ { name: result.data.name, url: currentUrl } ]);
+					}
+				} catch (error) {
+					if (Axios.isCancel(error)) {
+						console.log('Cancel request.');
+					}
 				}
 			};
 			fetchData();
+			return () => cancel();
 		},
 		[ currentUrl ]
 	);
